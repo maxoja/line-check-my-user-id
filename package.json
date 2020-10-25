@@ -1,0 +1,24 @@
+{
+  "name": "line-check-my-user-id",
+  "version": "1.0.0",
+  "description": "line-check-my-user-id",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxoja/line-check-my-user-id.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxoja/line-check-my-user-id/issues"
+  },
+  "homepage": "https://github.com/maxoja/line-check-my-user-id#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "line-messaging": "^1.2.0"
+  }
+}
