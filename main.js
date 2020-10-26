@@ -1,10 +1,9 @@
 const app = require('express')();
 const LINEBot = require('line-messaging');
-const https = require('https');
-const fs = require('fs');
-const port = 3001
 require('dotenv').config({ path: __dirname + '/.env' })
 
+const port = 3001
+const endpoint = '/linehook/your-id'
 // middle ware for before every request is passed to an endpoint
 app.use((req,res,next)=>{
 console.log(req.path);
@@ -17,7 +16,7 @@ const bot = LINEBot.Client({
   channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN
 });
 
-app.use(bot.webhook('/linehook/your-id'));
+app.use(bot.webhook(endpoint));
 
 bot.on(LINEBot.Events.FOLLOW, async function (replyToken, message) {
   console.log(message.getEvent())
@@ -27,7 +26,7 @@ bot.on(LINEBot.Events.FOLLOW, async function (replyToken, message) {
   await bot.pushTextMessage(message.getUserId(), message.getUserId())
 });
 
-app.get('/linehook/your-id/test', (req, res) => {
+app.get(endpoint + '/test', (req, res) => {
 	res.sendStatus(200)
 });
 
