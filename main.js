@@ -4,11 +4,6 @@ require('dotenv').config({ path: __dirname + '/.env' })
 
 const port = 3001
 const endpoint = '/linehook/your-id'
-// middle ware for before every request is passed to an endpoint
-app.use((req,res,next)=>{
-console.log(req.path);
-next();
-})
 
 const bot = LINEBot.Client({
   channelID: process.env.LINE_CHANNEL_ID,
@@ -16,19 +11,22 @@ const bot = LINEBot.Client({
   channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN
 });
 
+// middle ware for logging path of every request before passing to an endpoint handler
+app.use((req,res,next)=>{
+  console.log('Incoming request with path', req.path);
+  next();
+})
+
 app.use(bot.webhook(endpoint));
 
 bot.on(LINEBot.Events.FOLLOW, async function (replyToken, message) {
-  console.log(message.getEvent())
-  console.log(Object.keys(message))
-  console.log()
   await bot.replyTextMessage(replyToken, 'Your user ID is below')
   await bot.pushTextMessage(message.getUserId(), message.getUserId())
 });
 
-app.get(endpoint + '/test', (req, res) => {
-	res.sendStatus(200)
+app.get(endpoint + '/health', (req, res) => {
+  res.sendStatus(200)
 });
 
 app.listen(port)
-console.log('server listening to port : ' + port)
+console.log('Server is listening to port : ' + port)
