@@ -20,8 +20,8 @@ app.use((req,res,next)=>{
 app.use(bot.webhook(endpoint));
 
 bot.on(LINEBot.Events.FOLLOW, async function (replyToken, message) {
-  await bot.replyTextMessage(replyToken, 'Your user ID is below')
-  await bot.pushTextMessage(message.getUserId(), message.getUserId())
+  //await bot.replyTextMessage(replyToken, 'Your user ID is below')
+  await bot.replyTextMessage(replyToken, message.getUserId())
 });
 
 app.get(endpoint + '/health', (req, res) => {
