@@ -24,6 +24,10 @@ bot.on(LINEBot.Events.FOLLOW, async function (replyToken, message) {
   await bot.replyTextMessage(replyToken, message.getUserId())
 });
 
+bot.on(LINEBot.Events.MESSAGE, async function (replyToken, message) {
+  await bot.replyTextMessage(replyToken, message.getUserId())
+});
+
 app.get(endpoint + '/health', (req, res) => {
   res.sendStatus(200)
 });
