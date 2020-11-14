@@ -1,4 +1,4 @@
-# LINE bot - Your ID
+# LINE bot - Your ID [![Status badge](https://img.shields.io/website-up-down-green-red/https/twnz.dev%2Flinehook%2Fyour-id%2Fhealth.svg?label=service)](https://twnz.dev/linehook/your-id/health)
 By just initiate a chat with this bot, it simply lets you know your own user ID which you can use for any purpose. It's mostly useful for early-stage development work or targeted group testing.
 
 ## How to use
